@@ -12,6 +12,11 @@ ENTRY = (
     "and wave at the neighbours as if this had always been the arrangement."
 )
 
+# Competition gate: /output/entry.txt must be UTF-8 text, 1-200 characters,
+# a single line. Fail loudly instead of submitting an out-of-gate entry.
+assert 1 <= len(ENTRY) <= 200, f"entry is {len(ENTRY)} chars, outside 1-200 gate"
+assert "\n" not in ENTRY, "entry must be a single line"
+
 
 def main() -> None:
     os.makedirs("/output", exist_ok=True)
